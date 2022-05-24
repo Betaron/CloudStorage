@@ -47,6 +47,11 @@ public class Startup
     public void Configure(
         IApplicationBuilder app, IWebHostEnvironment environment)
     {
+        app.UseCors(builder =>
+        {
+            builder.AllowAnyOrigin();
+        });
+
         if (environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
