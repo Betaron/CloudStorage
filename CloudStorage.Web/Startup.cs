@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using CloudStorage.Core;
 using CloudStorage.Data;
 using CloudStorage.Web.HostedServices;
+using CloudStorage.Web.Middlewares;
 
 namespace CloudStorage.Web;
 
@@ -56,6 +57,8 @@ public class Startup
                     "/swagger/v1/swagger.json", "CloudStorageAPI v1");
             });
         }
+
+        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseHttpsRedirection();
         app.UseRouting();

@@ -1,4 +1,5 @@
 ﻿using CloudStorage.Core.Domains.Users.Repositories;
+using CloudStorage.Core.Exceptions;
 
 namespace CloudStorage.Core.Domains.Users.Services;
 
@@ -19,7 +20,7 @@ public class UserService : IUserService
         var loginMaxLength = 20;
         if (user.Login.Length > loginMaxLength)
         {
-            throw new Exception(message:
+            throw new ValidationException(validationMessage:
                 $"Длина логина не должна превышать {loginMaxLength}");
         }
 
@@ -28,7 +29,7 @@ public class UserService : IUserService
                 user.Login, cancellationToken);
         if (userExists)
         {
-            throw new Exception(message: 
+            throw new ValidationException(validationMessage: 
                 $"Пользователь с логином {user.Login} существует.");
         }
 
