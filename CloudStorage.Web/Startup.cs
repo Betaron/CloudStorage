@@ -81,7 +81,9 @@ public class Startup
     {
         app.UseCors(builder =>
         {
-            builder.AllowAnyOrigin();
+            builder
+                .AllowAnyOrigin()
+                .WithHeaders("Content-Type");
         });
 
         if (environment.IsDevelopment())
