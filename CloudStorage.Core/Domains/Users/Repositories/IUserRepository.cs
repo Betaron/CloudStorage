@@ -20,4 +20,12 @@ public interface IUserRepository
     /// <param name="cancellationToken"></param>
     Task<bool> UserExistsByLoginAsync(
         string login, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Looking for a specific user by Id
+    /// </summary>
+    /// <param name="id">User identification number</param>
+    /// <returns>True if user exists</returns>
+    Task<bool> UserExistsByIdAsync(
+        Guid id, CancellationToken cancellationToken);
 }

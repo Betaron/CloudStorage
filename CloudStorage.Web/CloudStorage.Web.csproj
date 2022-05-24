@@ -15,10 +15,6 @@
     <ProjectReference Include="..\CloudStorage.Data\CloudStorage.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Storages\Dto\" />
-  </ItemGroup>
-
   <PropertyGroup>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<NoWarn>$(NoWarn);1591</NoWarn>

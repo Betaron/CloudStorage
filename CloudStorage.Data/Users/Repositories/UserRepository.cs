@@ -58,4 +58,11 @@ public class UserRepository : IUserRepository
         return _context.Users.AnyAsync(it =>
             it.Login == login, cancellationToken);
     }
+
+    public Task<bool> UserExistsByIdAsync(
+        Guid id, CancellationToken cancellationToken)
+    {
+        return _context.Users.AnyAsync(it =>
+            it.Id == id, cancellationToken);
+    }
 }
