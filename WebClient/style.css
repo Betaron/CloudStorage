@@ -41,7 +41,7 @@ p.label {
     font-size: 18px;
 }
 
-#output {
+#IO {
     display: block;
     padding: 20px;
     margin: auto;
@@ -49,6 +49,8 @@ p.label {
     width: 600px;
     height: 150px;
     border: 1px solid gray;
+    text-align: center;
+    font-size: 20px;
 }
 
 div.buttons {
