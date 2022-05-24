@@ -74,3 +74,12 @@ button {
 #reg {
     color: #FF2667;
 }
+
+#secret {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: rgb(127, 47, 255);
+    margin-top: 10px;
+    font-size: 22px;
+}
