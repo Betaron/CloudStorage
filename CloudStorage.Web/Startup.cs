@@ -16,18 +16,26 @@ public class Startup
     {
         services.AddControllers().AddJsonOptions(j =>
         {
-            j.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            j.JsonSerializerOptions.Converters.Add(
+                new JsonStringEnumConverter());
         });
         services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+            options.SwaggerDoc(
+                "v1",
+                new Microsoft.OpenApi.Models.OpenApiInfo
                 {Title = "CloudStorageAPI", Version = "v1"});
-            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+            var xmlFilename = 
+                $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
+            options.IncludeXmlComments(
+                Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
+    public void Configure(
+        IApplicationBuilder app, IWebHostEnvironment environment)
     {
         if (environment.IsDevelopment())
         {
@@ -35,14 +43,16 @@ public class Startup
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CloudStorageAPI v1");
+                c.SwaggerEndpoint(
+                    "/swagger/v1/swagger.json", "CloudStorageAPI v1");
             });
         }
 
         app.UseHttpsRedirection();
         app.UseRouting();
 
-        app.UseEndpoints(endpoints => endpoints.MapControllers());
+        app.UseEndpoints(endpoints => 
+            endpoints.MapControllers());
     }
 }
 
