@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Storages\Dto\" />
     <Folder Include="Controllers\Users\Dto\" />
   </ItemGroup>
 
