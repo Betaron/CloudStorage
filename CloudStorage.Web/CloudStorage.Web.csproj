@@ -10,6 +10,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CloudStorage.Core\CloudStorage.Core.csproj" />
+    <ProjectReference Include="..\CloudStorage.Data\CloudStorage.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Users\Dto\" />
+  </ItemGroup>
+
   <PropertyGroup>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<NoWarn>$(NoWarn);1591</NoWarn>
