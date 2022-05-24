@@ -1,0 +1,76 @@
+p, button {
+    font-family: 'Inter';
+}
+
+p.title {
+    text-align: center;
+    font-size: 36pt;
+    margin-top: 50px;
+    margin-bottom: 36px;
+}
+
+#input {
+    height: auto;
+    width: 500px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translate(50px, 0);
+}
+
+div.wrap-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+input {
+    margin: 10px;
+    width: 250px;
+    height: 26px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+}
+
+p.label {
+    text-align: right;
+    width: 80px;
+    margin: 14px;
+    margin-right: 0px;
+    font-size: 18px;
+}
+
+#output {
+    display: block;
+    padding: 20px;
+    margin: auto;
+    margin-top: 190px;
+    width: 600px;
+    height: 150px;
+    border: 1px solid gray;
+}
+
+div.buttons {
+    position: absolute;
+    top: 296px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0)
+}
+
+button {
+    width: auto;
+    margin-left: 26px;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 18px;
+}
+
+#enter {
+    color: #387CFF;
+}
+
+#reg {
+    color: #FF2667;
+}
