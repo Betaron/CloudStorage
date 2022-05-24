@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
 using System.Text.Json.Serialization;
+using CloudStorage.Core;
+using CloudStorage.Data;
+using CloudStorage.Web.HostedServices;
 
 namespace CloudStorage.Web;
 
@@ -32,6 +35,12 @@ public class Startup
             options.IncludeXmlComments(
                 Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
+
+        services
+            .AddData(Configuration)
+            .AddCore();
+
+        services.AddHostedService<MigrationHostedService>();
     }
 
     public void Configure(
