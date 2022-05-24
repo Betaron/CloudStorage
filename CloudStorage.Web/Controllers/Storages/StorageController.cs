@@ -31,4 +31,22 @@ public class StorageController
             Secret = model.Secret
         }, cancellationToken);
     }
+
+    /// <summary>
+    /// Searches for a storage by user id
+    /// </summary>
+    /// <param name="id">User identification number</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Found secret</returns>
+    [HttpGet("{id}")]
+    public async Task<JsonResult> GetById(Guid id, CancellationToken cancellationToken)
+    {
+        var model = await _storageService.GetByUserIdAsync(id, cancellationToken);
+
+        return new JsonResult(
+            new
+            {
+                secret = model.Secret
+            });
+    }
 }

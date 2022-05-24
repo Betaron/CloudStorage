@@ -9,4 +9,13 @@ public interface IStorageService
     /// <param name="cancellationToken"></param>
     Task SetAsync(
         Storage storage, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Searches for a storage by user id
+    /// </summary>
+    /// <param name="id">User identification number</param>
+    /// <returns>Found user</returns>
+    /// <param name="cancellationToken"></param>
+    Task<Storage> GetByUserIdAsync(
+        Guid id, CancellationToken cancellationToken);
 }

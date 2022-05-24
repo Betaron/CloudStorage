@@ -42,4 +42,18 @@ public class StorageRepository : IStorageRepository
         return _context.Storages.AnyAsync(it =>
             it.Id == id, cancellationToken);
     }
+
+    public async Task<Storage> GetByUserIdAsync(
+        Guid id, CancellationToken cancellationToken)
+    {
+        var entity = await _context.Storages.FirstOrDefaultAsync(it =>
+            it.UserId == id, cancellationToken);
+
+        return new Storage()
+        {
+            Id = entity.Id,
+            UserId = entity.UserId,
+            Secret = entity.Secret
+        };
+    }
 }

@@ -47,4 +47,20 @@ public class StorageService : IStorageService
 
         await _unitOfWork.SaveChangesAsync();
     }
+
+    public async Task<Storage> GetByUserIdAsync(
+        Guid id, CancellationToken cancellationToken)
+    {
+        var userExists =
+            await _userRepository.UserExistsByIdAsync(
+                id, cancellationToken);
+        if (!userExists)
+        {
+            throw new ValidationException(validationMessage:
+                $"Пользователя не существует.");
+        }
+
+        return 
+            await _storageRepository.GetByUserIdAsync(id, cancellationToken);
+    }
 }

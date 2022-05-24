@@ -4,6 +4,10 @@ using CloudStorage.Core;
 using CloudStorage.Data;
 using CloudStorage.Web.HostedServices;
 using CloudStorage.Web.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 
 namespace CloudStorage.Web;
 
@@ -35,7 +39,35 @@ public class Startup
 
             options.IncludeXmlComments(
                 Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+            {
+                {
+                    new OpenApiSecurityScheme()
+                    {
+                        Reference = new OpenApiReference()
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = SecuritySchemeType.OAuth2.GetDisplayName()
+                        }
+                    },
+                    new List<string>()
+                }
+            });
         });
+
+        services
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.Audience = "api";
+                options.Authority = "https://demo.duendesoftware.com";
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateLifetime = true,
+                    ValidateAudience = false
+                };
+            });
 
         services
             .AddData(Configuration)
