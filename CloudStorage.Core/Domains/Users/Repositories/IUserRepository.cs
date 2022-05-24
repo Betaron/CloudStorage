@@ -10,7 +10,7 @@ public interface IUserRepository
     /// </summary>
     /// <param name="user">Template user</param>
     /// <param name="cancellationToken"></param>
-    Task CreateAsync(User user, CancellationToken cancellationToken);
+    Task<Guid> CreateAsync(User user, CancellationToken cancellationToken);
 
     /// <summary>
     /// Looking for a specific user by login

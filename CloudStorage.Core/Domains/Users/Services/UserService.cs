@@ -14,7 +14,7 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task CreateAsync(
+    public async Task<Guid> CreateAsync(
         User user, CancellationToken cancellationToken)
     {
         var loginMaxLength = 20;
@@ -35,7 +35,8 @@ public class UserService : IUserService
 
         user.Id = new Guid();
 
-        await _userRepository.CreateAsync(user, cancellationToken);
+        var userId = await _userRepository.CreateAsync(user, cancellationToken);
         await _unitOfWork.SaveChangesAsync();
+        return userId;
     }
 }

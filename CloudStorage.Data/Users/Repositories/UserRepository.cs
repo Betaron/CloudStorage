@@ -36,7 +36,7 @@ public class UserRepository : IUserRepository
         return (hashed, salt);
     }
 
-    public async Task CreateAsync(
+    public async Task<Guid> CreateAsync(
         User user, CancellationToken cancellationToken)
     {
         var passwordHash = MakeHash(user.Password);
@@ -50,6 +50,7 @@ public class UserRepository : IUserRepository
         };
 
         await _context.Users.AddAsync(entity, cancellationToken);
+        return entity.Id;
     }
 
     public Task<bool> UserExistsByLoginAsync(

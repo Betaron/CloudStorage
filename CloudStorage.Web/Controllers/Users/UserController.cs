@@ -22,13 +22,17 @@ public class UserController
     /// <param name="model">Template user</param>
     /// <param name="cancellationToken"></param>
     [HttpPost]
-    public Task Create(
+    public async Task<JsonResult> Create(
         AuthUserDto model, CancellationToken cancellationToken)
     {
-        return _userService.CreateAsync(new User
-        {
-            Login = model.Login,
-            Password = model.Password
-        }, cancellationToken);
+        return new JsonResult(
+            new
+            {
+                userId = await _userService.CreateAsync(new User
+                {
+                    Login = model.Login,
+                    Password = model.Password
+                }, cancellationToken)
+            });
     }
 }
